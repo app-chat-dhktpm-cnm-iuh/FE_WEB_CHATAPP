@@ -1,0 +1,53 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.form-group {
+  width: 320px;
+}
+
+.link-text-decoration {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #087258;
+}
+
+input {
+  height: 45px;
+}
+
+#btn-dark-green {
+  background-color: #087258;
+  color: #fff;
+  font-weight: bolder;
+  height: 45px;
+}
+
+#btn-dark-green:hover {
+  background-color: #10c074;
+}
+
+#btn-light-green {
+  background-color: #0BA360;
+  color: #fff;
+  font-weight: bolder;
+  height: 45px;
+}
+
+#btn-light-green:hover {
+  background-color: #11aa68;
+}
+
+.text-green-bold {
+  font-weight: bolder;
+  color: #0BA360;
+}
+
+.left-side {
+  height: 100%;
+  background-color: #C4FFF1;
+}
