@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.svg"
 
 function Login() {
-    const [count, setCount] = useState(0);
+    
 
     return (
         <>
