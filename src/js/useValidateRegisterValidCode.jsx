@@ -6,7 +6,7 @@ function useValidateRegisterValidCode() {
         field1: '',
         field2: '',
         field3: '',
-        ield4: '',
+        field4: '',
     });
 
     const [errors, setErrors] = useState({

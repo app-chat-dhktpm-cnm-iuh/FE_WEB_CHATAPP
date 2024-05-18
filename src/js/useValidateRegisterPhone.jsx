@@ -1,73 +1,82 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import validator from "validator";
 
 function useValidateRegisterPhone() {
-    const [isValid, setIsValid] = useState(true);
-    const [isChecked, setIsChecked] = useState(true);
-    const [valuePhone, setValuePhone] = useState('');
+  const [isValid, setIsValid] = useState(true);
 
-    const checkValidData = (valuePhone) => {
-        var value = valuePhone.target.value;
-        setValuePhone(value)
-        const checkCBConfirm = document.getElementById("cbxConfirm");
+  const checkPhoneNumberValid = (phone) => {
+    setIsValid(phone != null && validator.isMobilePhone(phone, "vi-VN"));
+    return phone;
+  };
 
-        function checkedValid() {
-            if (!checkCBConfirm.checked) {
-                setIsChecked(false);
-            } else setIsChecked(true);
-        }
+  return { isValid, checkPhoneNumberValid };
 
-        if (value == "") {
-            setIsValid(false);
-            checkedValid();
-        } else if (!isValid) {
-            setIsChecked(false);
-            checkedValid();
-        } else if (isValid) {
-            checkedValid();
-        } else {
-            setIsValid(true);
-            setIsChecked(true);
-        }
-    };
+  //   const checkValidData = (valuePhone) => {
+  //     var value = valuePhone.target.value;
+  //     setValuePhone(value);
+  //     const checkCBConfirm = document.getElementById("cbxConfirm");
 
-    const handlePhoneNumberChange = (valuePhone) => {
-        var value = valuePhone.target.value;
+  //     function checkedValid() {
+  //       if (!checkCBConfirm.checked) {
+  //         setIsChecked(false);
+  //       } else setIsChecked(true);
+  //     }
 
-        if (value == "") {
-            setIsValid(true);
-        } else if (validator.isMobilePhone(value, "vi-VN")) {
-            setIsValid(true);
-        } else setIsValid(false);
-    };
+  //     if (value == "") {
+  //       setIsValid(false);
+  //       checkedValid();
+  //     } else if (!isValid) {
+  //       setIsChecked(false);
+  //       checkedValid();
+  //     } else if (isValid) {
+  //       checkedValid();
+  //     } else {
+  //       setIsValid(true);
+  //       setIsChecked(true);
+  //     }
+  //   };
 
-    const renderEr = () => {
-        if (isValid) {
-            return <></>;
-        } else
-            return (
-                <>
-                    <span className="text-danger">số điện thoại không hợp lệ</span>
-                </>
-            );
-    };
+  //   const handlePhoneNumberChange = (valuePhone) => {
+  //     var value = valuePhone.target.value;
+  //     setValuePhone(valuePhone.target.value);
 
-    const renderErCB = () => {
-        if (isChecked) {
-            return <></>;
-        } else
-            return (
-                <>
-                    <span className="text-danger">bạn phải đồng ý để tiếp tục</span>
-                </>
-            );
-    };
+  //     if (value == "") {
+  //       setIsValid(true);
+  //     } else if (validator.isMobilePhone(value, "vi-VN")) {
+  //       setIsValid(true);
+  //     } else setIsValid(false);
 
-    return {
-        valuePhone,
-        renderEr,
-        renderErCB,
-        handlePhoneNumberChange,
-        checkValidData
-    }
+  //     return value;
+  //   };
+
+  //   const renderEr = () => {
+  //     if (isValid) {
+  //       return <></>;
+  //     } else
+  //       return (
+  //         <>
+  //           <span className="text-danger fst-italic">Số điện thoại không hợp lệ</span>
+  //         </>
+  //       );
+  //   };
+
+  //   const renderErCB = () => {
+  //     if (isChecked) {
+  //       return <></>;
+  //     } else
+  //       return (
+  //         <>
+  //           <span className="text-danger">Bạn phải đồng ý để tiếp tục</span>
+  //         </>
+  //       );
+  //   };
+
+  //   return {
+  //     valuePhone,
+  //     renderEr,
+  //     renderErCB,
+  //     handlePhoneNumberChange,
+  //     checkValidData,
+  //   };
 }
 export default useValidateRegisterPhone;
